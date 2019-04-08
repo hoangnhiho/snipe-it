@@ -8,7 +8,16 @@ class LocationSeeder extends Seeder
     public function run()
     {
         Location::truncate();
-        factory(Location::class, 10)->create();
+        // factory(Location::class, 10)->create();
+
+        Location::create([
+            'name' => 'Unidus Community',
+            'address' => '204 Sherbrooke Rd',
+            'city' => 'Willawong',
+            'state' => 'QLD',
+            'country' => 'Australia',
+            'zip' => '4110',
+        ]);
 
         $src = public_path('/img/demo/locations');
         $dst =  public_path('/uploads/locations');

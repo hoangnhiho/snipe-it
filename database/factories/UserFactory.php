@@ -2,15 +2,15 @@
 
 use App\Models\Company;
 
-$password = bcrypt('password');
+$password = \Hash::make('secret');
 
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) use ($password) {
     return [
         'activated' => 1,
-        'address' => $faker->address,
-        'city' => $faker->city,
-        'company_id' => rand(1,4),
-        'country' => $faker->country,
+        'address' => '204 Sherbrooke Rd',
+        'city' => 'Willawong',
+        'company_id' => null,
+        'country' => 'Australia',
         'department_id' => rand(1,6),
         'email' => $faker->safeEmail,
         'employee_num' => $faker->numberBetween(3500, 35050),
@@ -18,24 +18,38 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) use (
         'jobtitle' => $faker->jobTitle,
         'last_name' => $faker->lastName,
         'locale' => $faker->locale,
-        'location_id' => rand(1,5),
+        'location_id' => 1,
         'notes' => 'Created by DB seeder',
         'password' => $password,
         'permissions' => '{"user":"0"}',
-        'phone' => $faker->phoneNumber,
-        'state' => $faker->stateAbbr,
+        'phone' => '(07) 3714 0316',
+        'state' => 'QLD',
         'username' => $faker->username,
-        'zip' => $faker->postcode
+        'zip' => '4110',
     ];
 });
 
 
 $factory->state(App\Models\User::class, 'first-admin', function ($faker) {
     return [
-        'first_name' => 'Admin',
-        'last_name' => 'User',
-        'username' => 'admin',
+        'first_name' => 'Angelene',
+        'last_name' => 'T',
+        'username' => 'AngelBeats',
+        'email' => 'angelene@hope-church.com',
         'permissions' => '{"superuser":"1"}',
+        'notes' => 'Real home = Australia =] FOR LIFE KEKEKE #easterEgg',
+        'jobtitle' => 'Accountant by day, Angel by night'
+    ];
+});
+
+$factory->state(App\Models\User::class, 'nhi-admin', function ($faker) {
+    return [
+        'first_name' => 'Hoang',
+        'last_name' => 'Ho',
+        'username' => 'HH',
+        'email' => 'hoang@2mm.io',
+        'permissions' => '{"superuser":"1"}',
+        'jobtitle' => 'Batman'
     ];
 });
 
@@ -43,8 +57,8 @@ $factory->state(App\Models\User::class, 'snipe-admin', function ($faker) {
     return [
         'first_name' => 'Snipe E.',
         'last_name' => 'Head',
-        'username' => 'snipe',
-        'email' => 'snipe@snipe.net',
+        'username' => 'snipes',
+        'email' => 'snipes@snipe.net',
         'permissions' => '{"superuser":"1"}',
     ];
 });
