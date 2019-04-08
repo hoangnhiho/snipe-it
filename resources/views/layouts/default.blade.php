@@ -742,7 +742,7 @@
 
       </div><!-- /.content-wrapper -->
 
-      <footer class="main-footer hidden-print">
+      <footer class="main-footer hidden-print" style="display:none">
 
         <div class="pull-right hidden-xs">
           @if ($snipeSettings->version_footer!='off')
